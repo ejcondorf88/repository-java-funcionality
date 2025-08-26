@@ -1,6 +1,15 @@
+package com.example.module.controller;
+
+import com.example.module.model.IProductService;
+import com.example.module.model.IProductService;
+import com.example.module.model.ProductModel;
+
+import java.util.Optional;
+import java.util.stream.Stream;
+
 public class ProducController {
-    private final IProducService producService;
-    public ProducController(IProducService producService) {
+    private final IProductService producService;
+    public ProducController(IProductService producService) {
         this.producService = producService;
     }
     public Optional<ProductModel> findProduct(Integer id){
@@ -30,7 +39,5 @@ public class ProducController {
     public double calculateMax(){
         return producService.calculateMax();
     }
-    public long calculateCount(){
-        return producService.calculateCount();
-    }
+
 }
