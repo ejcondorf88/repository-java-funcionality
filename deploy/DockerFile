@@ -26,3 +26,4 @@ COPY --from=build /app/target/*.jar app.jar
 
 # Comando de ejecución
 ENTRYPOINT ["java", "-jar", "app.jar"]
+#Cambiar el nombre del archivo DockerFile a Dockerfile
