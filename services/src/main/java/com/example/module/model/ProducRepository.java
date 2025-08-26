@@ -1,64 +1,85 @@
 package com.example.module.model;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class ProducRepository {
     private final List<ProductModel> products;
     public ProducRepository() {
         this.products = new ArrayList<>();
     }
-    public Optional<ProductModel> findProduct(Integer id){
+
+    public Optional<ProductModel> findProduct(Integer id) {
         Optional<ProductModel> existProduct = products.stream()
-                .filter(product -> product.getId().equals(id))
+                .filter(product -> Objects.equals(product.getId(), id)) // ✅ CORRECTO
                 .findFirst();
-        if(existProduct.isEmpty()){
+
+        boolean isPresent = existProduct.isPresent();
+        if (!isPresent) {
             throw new RuntimeException("Product not found");
         }
-        return existProduct.get();
-    }
+        return existProduct;
+    };
+
     public Optional<ProductModel> findProduct(String name ){
         Optional<ProductModel> existProduct = products.stream()
                 .filter(product -> product.getName().equals(name))
                 .findFirst();
-        if(existProduct.isEmpty()){
+        if(!existProduct.isPresent()){
             throw new RuntimeException("Product not found");
         }
-        return existProduct.get();
+        return existProduct;
     }
-    public findByPrice(Double price){
+
+    public Optional<ProductModel> findByPrice(Double price){
         return products.stream()
-                .filter(product -> product.getPrice().equals(price))
+                .filter(product -> Objects.equals(product.getPrice(), price))
                 .findFirst();
     }
-    public orderByPrice(){
+
+    public List<ProductModel> orderByPrice(){
         return products.stream()
-                .sorted(Comparator.comparing(ProductModel::getPrice));
+                .sorted(Comparator.comparing(ProductModel::getPrice))
+                .collect(Collectors.toList());
     }
-    public orderByName(){
+
+    public List<ProductModel> orderByName(){
         return products.stream()
-                .sorted(Comparator.comparing(ProductModel::getName));
+                .sorted(Comparator.comparing(ProductModel::getName))
+                .collect(Collectors.toList());
     }
-    public calculateTotal(){
+
+    public double calculateTotal(){
         return products.stream()
                 .mapToDouble(ProductModel::getPrice)
                 .sum();
     }
-    public calculateAverage(){
+
+    public double calculateAverage(){
         return products.stream()
                 .mapToDouble(ProductModel::getPrice)
-                .average();
+                .average()
+                .orElse(0.0);
     }
-    public calculateMin(){
+
+    public double calculateMin(){
         return products.stream()
                 .mapToDouble(ProductModel::getPrice)
-                .min();
+                .min()
+                .orElse(0.0);
     }
-    public calculateMax(){
+
+    public double calculateMax(){
         return products.stream()
                 .mapToDouble(ProductModel::getPrice)
-                .max();
+                .max()
+                .orElse(0.0);
     }
-    public calculateCount(){
+
+    public  double calculateCount(){
         return products.stream()
                 .count();
     }
-
-
 }
+
+

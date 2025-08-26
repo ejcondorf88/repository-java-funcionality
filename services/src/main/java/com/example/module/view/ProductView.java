@@ -1,3 +1,10 @@
+package com.example.module.view;
+
+import com.example.module.controller.ProducController;
+import com.example.module.model.ProductModel;
+
+import java.util.Optional;
+
 public class ProductView {
     private final ProducController producController;
     public ProductView(ProducController producController) {
@@ -74,7 +81,7 @@ public class ProductView {
     public void findProductByPrice(){
         System.out.println("Enter the price of the product");
         String price = System.console().readLine();
-        Optional<ProductModel> product = producController.findByPrice(price);
+        Optional<ProductModel> product = producController.findByPrice(Double.parseDouble(price));
         if(product.isPresent()){
             System.out.println(product.get());
         }else{
@@ -84,23 +91,14 @@ public class ProductView {
     public void orderByPrice(){
         System.out.println("Enter the price of the product");
         String price = System.console().readLine();
-        Optional<ProductModel> product = producController.findByPrice(price);
+        Optional<ProductModel> product = producController.findByPrice(Double.parseDouble(price));
         if(product.isPresent()){
             System.out.println(product.get());
         }else{
             System.out.println("Product not found");
         }
     }
-    public void orderByPrice(){
-        System.out.println("Enter the price of the product");
-        String price = System.console().readLine();
-        Optional<ProductModel> product = producController.findByPrice(price);
-        if(product.isPresent()){
-            System.out.println(product.get());
-        }else{
-            System.out.println("Product not found");
-        }
-    }
+
     public void orderByName(){
         System.out.println("Enter the name of the product");
         String name = System.console().readLine();
@@ -114,7 +112,7 @@ public class ProductView {
     public void calculateTotal(){
         System.out.println("Enter the price of the product");
         String price = System.console().readLine();
-        Optional<ProductModel> product = producController.findByPrice(price);
+        Optional<ProductModel> product = producController.findByPrice(Double.parseDouble(price));
         if(product.isPresent()){
             System.out.println(product.get());
         }else{
@@ -124,7 +122,7 @@ public class ProductView {
     public void calculateAverage(){
         System.out.println("Enter the price of the product");
         String price = System.console().readLine();
-        Optional<ProductModel> product = producController.findByPrice(price);
+        Optional<ProductModel> product = producController.findByPrice(Double.parseDouble(price));
         if(product.isPresent()){
             System.out.println(product.get());
         }else{
@@ -134,7 +132,7 @@ public class ProductView {
     public void calculateMin(){
         System.out.println("Enter the price of the product");
         String price = System.console().readLine();
-        Optional<ProductModel> product = producController.findByPrice(price);
+        Optional<ProductModel> product = producController.findByPrice(Double.parseDouble(price));
         if(product.isPresent()){
             System.out.println(product.get());
         }else{
@@ -144,7 +142,7 @@ public class ProductView {
     public void calculateMax(){
         System.out.println("Enter the price of the product");
         String price = System.console().readLine();
-        Optional<ProductModel> product = producController.findByPrice(price);
+        Optional<ProductModel> product = producController.findByPrice(Double.parseDouble(price));
         if(product.isPresent()){
             System.out.println(product.get());
         }else{
@@ -154,7 +152,7 @@ public class ProductView {
     public void calculateCount(){
         System.out.println("Enter the price of the product");
         String price = System.console().readLine();
-        Optional<ProductModel> product = producController.findByPrice(price);
+        Optional<ProductModel> product = producController.findByPrice(Double.parseDouble(price));
         if(product.isPresent()){
             System.out.println(product.get());
         }else{
