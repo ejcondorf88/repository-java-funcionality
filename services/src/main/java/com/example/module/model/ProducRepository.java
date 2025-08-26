@@ -22,6 +22,43 @@ public class ProducRepository {
         }
         return existProduct.get();
     }
+    public findByPrice(Double price){
+        return products.stream()
+                .filter(product -> product.getPrice().equals(price))
+                .findFirst();
+    }
+    public orderByPrice(){
+        return products.stream()
+                .sorted(Comparator.comparing(ProductModel::getPrice));
+    }
+    public orderByName(){
+        return products.stream()
+                .sorted(Comparator.comparing(ProductModel::getName));
+    }
+    public calculateTotal(){
+        return products.stream()
+                .mapToDouble(ProductModel::getPrice)
+                .sum();
+    }
+    public calculateAverage(){
+        return products.stream()
+                .mapToDouble(ProductModel::getPrice)
+                .average();
+    }
+    public calculateMin(){
+        return products.stream()
+                .mapToDouble(ProductModel::getPrice)
+                .min();
+    }
+    public calculateMax(){
+        return products.stream()
+                .mapToDouble(ProductModel::getPrice)
+                .max();
+    }
+    public calculateCount(){
+        return products.stream()
+                .count();
+    }
 
 
 }
