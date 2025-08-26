@@ -3,7 +3,7 @@ package com.example.module.model;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public interface IProducService {
+public interface IProductService {
 
     Optional<ProductModel> findProduct(Integer id);
 
@@ -23,5 +23,5 @@ public interface IProducService {
 
     double calculateMax();
 
-    long calculateCount();
+    double calculateCount();
 }
